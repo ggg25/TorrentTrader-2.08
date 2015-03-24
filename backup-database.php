@@ -8,6 +8,15 @@
 //
 //
 
+// The default user & pass are Username and Password
+
+if ( $_SERVER['PHP_AUTH_USER'] != 'Username' && $_SERVER['PHP_AUTH_PASS'] != 'Password' )
+{
+	  header('WWW-Authenticate: Basic realm="TT2-SVN"');
+	  header('HTTP/1.1 401 Unauthorized');
+	  die;
+}
+
 $backupdir = getcwd() . '/backups'; //Ensure this folder exists and is chmod 777
 
 require_once("backend/mysql.php");
